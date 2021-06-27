@@ -335,6 +335,7 @@ export const bulmaConfig: any = {
     tableEventVariantClass: "is-",
     tableEventsClass: "events",
     tableEventClass: "event",
+    boxClass: "box",
   },
   modal: {
     override: true,

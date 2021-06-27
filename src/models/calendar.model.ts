@@ -1,6 +1,6 @@
 export default class Calendar {
   daysOfTheWeek?: number[] | null;
-  title: string = "";
+  title = "";
   startDate?: Date | null;
   endDate?: Date | null;
 }

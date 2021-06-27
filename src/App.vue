@@ -27,8 +27,8 @@ export default defineComponent({
         to: "/",
       },
       {
-        label: "About",
-        to: "/About",
+        label: "Create",
+        to: "/create",
       },
     ]);
     return {

@@ -4,11 +4,11 @@
 }
 </style>
 <template>
-  <div class="section title is-size-1">
+  <div class="section title is-size-3">
     Calendars
     <hr />
-    <div v-if="calendars?.length < 1">
-      <div class="subtitle is-3">
+    <div v-if="calendars?.length == 0">
+      <div class="subtitle is-4">
         There are no calendars to display at this time.
       </div>
     </div>
