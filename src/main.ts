@@ -1,6 +1,20 @@
 import { createApp } from "vue";
-import App from "./App.vue";
 import router from "./router";
-import store from "./store";
-import PrimeVue from "primevue/config";
-createApp(App).use(store).use(router).use(PrimeVue, { ripple: true }).mount("#app");
+import store, { key } from "./store";
+import App from "../src/App.vue";
+import Oruga from "@oruga-ui/oruga-next";
+import { bulmaConfig } from "./oruga-configs/bulma-config";
+
+import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+import "@fortawesome/fontawesome-free/scss/regular.scss";
+import "@fortawesome/fontawesome-free/scss/solid.scss";
+import "bulma";
+const app = createApp(App);
+app
+  .use(store, key)
+  .use(router)
+  .use(Oruga, {
+    iconPack: "fas",
+    ...bulmaConfig,
+  })
+  .mount("#app");

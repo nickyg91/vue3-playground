@@ -1,16 +1,25 @@
 <template>
-  <Menubar class="p-menubar" :model="routes"></Menubar>
-  <div class="content">
-    <router-view />
+  <nav class="navbar is-primary">
+    <div class="navbar-brand">
+      <router-link
+        class="navbar-item"
+        v-bind:key="route.to"
+        v-for="route in routes"
+        :to="route.to"
+        active
+      >
+        {{ route.label }}</router-link
+      >
+    </div>
+  </nav>
+  <div class="mt-5 container">
+    <router-view></router-view>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Menubar from "primevue/menubar";
 export default defineComponent({
-  components: {
-    Menubar,
-  },
+  name: "App",
   setup() {
     const routes = ref([
       {
@@ -28,28 +37,8 @@ export default defineComponent({
   },
 });
 </script>
-
 <style lang="scss">
-@import "~primevue/resources/themes/vela-blue/theme.css"; //theme
-@import "~primevue/resources/primevue.min.css"; //core css
-@import "~primeicons/primeicons.css"; //icons
-@import "~primeflex/primeflex.css";
 html {
   min-height: 100vh;
-}
-.content {
-  padding-left: 10%;
-  padding-right: 10%;
-  justify-content: center;
-  display: flex;
-}
-.p-menubar {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-body {
-  margin: 0;
 }
 </style>
