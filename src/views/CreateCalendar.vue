@@ -31,7 +31,9 @@
           <label :for="day.toString()">{{ dayOfTheWeek[day] }}</label>
         </div>
       </div>
-      <Button label="Submit"></Button>
+      <div class="p-col-2">
+        <Button @click="submitCalendar" label="Submit"></Button>
+      </div>
     </div>
   </div>
 </template>
@@ -44,6 +46,8 @@ import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import Checkbox from "primevue/checkbox";
 import { DayOfTheWeek } from "@/models/day-of-the-week.enum";
+import { useStore } from "vuex";
+import { key } from "@/store";
 export default defineComponent({
   components: {
     Divider,
@@ -53,6 +57,7 @@ export default defineComponent({
     Checkbox,
   },
   setup() {
+    const store = useStore(key);
     const calendar = ref(new MyCalendar());
     const daysOfTheWeek: DayOfTheWeek[] = [];
     const dayOfTheWeek = DayOfTheWeek;
@@ -62,10 +67,16 @@ export default defineComponent({
       }
     }
     console.log(daysOfTheWeek);
+    const submitCalendar = () => {
+      console.log(calendar.value);
+      store.dispatch("storeCalendar", calendar.value);
+      calendar.value = new MyCalendar();
+    };
     return {
       calendar,
       daysOfTheWeek,
       dayOfTheWeek,
+      submitCalendar,
     };
   },
 });
