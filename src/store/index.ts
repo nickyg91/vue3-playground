@@ -1,4 +1,4 @@
-import Calendar from "@/models/calendar.model";
+import { Calendar } from "@/models/calendar.model";
 import { InjectionKey } from "@vue/runtime-core";
 import { createStore, Store } from "vuex";
 

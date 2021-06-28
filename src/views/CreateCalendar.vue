@@ -1,40 +1,71 @@
 <template>
   <div>
-    <h1 class="title is-size-3">Create a Calendar</h1>
+    <h1>Create a Calendar</h1>
   </div>
-  <hr />
-  <div class="columns">
-    <div class="col is-two-thirds">
-      <div class="field">
+  <Divider></Divider>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-col-6">
+      <div class="p-field">
         <label class="label" for="title">Title</label>
-        <div class="control">
-          <input type="text" class="input" placeholder="Title" />
-        </div>
+        <InputText v-model="calendar.title" id="firstname" type="text" />
       </div>
-      <div class="field">
+      <div class="p-field">
         <label class="label" for="title">Start Date</label>
-        <div class="control">
-          <o-datepicker v-model="calendar.startDate"></o-datepicker>
-        </div>
+        <Calendar v-model="calendar.startDate" />
       </div>
-      <div class="field">
+      <div class="p-field">
         <label class="label" for="title">End Date</label>
-        <div class="control">
-          <input type="text" class="input" placeholder="Title" />
+        <Calendar v-model="calendar.endDate" />
+      </div>
+      <div class="p-formgroup-inline">
+        <div
+          v-bind:key="day"
+          v-for="day in daysOfTheWeek"
+          class="p-field-checkbox"
+        >
+          <Checkbox
+            :id="day.toString()"
+            :value="day"
+            v-model="calendar.daysOfTheWeek"
+          />
+          <label :for="day.toString()">{{ dayOfTheWeek[day] }}</label>
         </div>
       </div>
+      <Button label="Submit"></Button>
     </div>
   </div>
 </template>
 <script lang="ts">
-import Calendar from "@/models/calendar.model";
+import { Calendar as MyCalendar } from "@/models/calendar.model";
 import { defineComponent, ref } from "vue";
-
+import Divider from "primevue/divider";
+import InputText from "primevue/inputtext";
+import Calendar from "primevue/calendar";
+import Button from "primevue/button";
+import Checkbox from "primevue/checkbox";
+import { DayOfTheWeek } from "@/models/day-of-the-week.enum";
 export default defineComponent({
+  components: {
+    Divider,
+    InputText,
+    Calendar,
+    Button,
+    Checkbox,
+  },
   setup() {
-    const calendar = ref(new Calendar());
+    const calendar = ref(new MyCalendar());
+    const daysOfTheWeek: DayOfTheWeek[] = [];
+    const dayOfTheWeek = DayOfTheWeek;
+    for (const item in dayOfTheWeek) {
+      if (!isNaN(Number(item))) {
+        daysOfTheWeek.push(Number(item));
+      }
+    }
+    console.log(daysOfTheWeek);
     return {
       calendar,
+      daysOfTheWeek,
+      dayOfTheWeek,
     };
   },
 });

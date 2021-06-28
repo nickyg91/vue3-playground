@@ -1,6 +1,8 @@
-export default class Calendar {
-  daysOfTheWeek?: number[] | null;
+import { DayOfTheWeek } from "./day-of-the-week.enum";
+
+export class Calendar {
+  daysOfTheWeek?: DayOfTheWeek[] | undefined;
   title = "";
-  startDate?: Date | null;
-  endDate?: Date | null;
+  startDate?: Date | undefined;
+  endDate?: Date | undefined;
 }

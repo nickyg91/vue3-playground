@@ -1,29 +1,20 @@
 <template>
-  <nav class="navbar is-primary">
-    <div class="navbar-brand">
-      <router-link
-        class="navbar-item"
-        v-bind:key="route.to"
-        v-for="route in routes"
-        :to="route.to"
-        active
-      >
-        {{ route.label }}</router-link
-      >
-    </div>
-  </nav>
-  <div class="mt-5 container">
-    <router-view></router-view>
+  <Menubar class="p-menubar" :model="routes"></Menubar>
+  <div class="content">
+    <router-view />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Menubar from "primevue/menubar";
 export default defineComponent({
-  name: "App",
+  components: {
+    Menubar,
+  },
   setup() {
     const routes = ref([
       {
-        label: "Home",
+        label: "Calendars",
         to: "/",
       },
       {
@@ -38,7 +29,29 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+@import "~primevue/resources/themes/vela-blue/theme.css"; //theme
+@import "~primevue/resources/primevue.min.css"; //core css
+@import "~primeicons/primeicons.css"; //icons
+@import "~primeflex/primeflex.css";
 html {
   min-height: 100vh;
+}
+.content {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 15px;
+}
+.p-menubar {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  color: white;
+  background-color: var(--surface-0);
 }
 </style>
