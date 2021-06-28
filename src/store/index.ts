@@ -26,8 +26,8 @@ export default createStore<State>({
     },
   },
   actions: {
-    storeCalendar(context) {
-      context.commit("storeCalendar");
+    storeCalendar(context, calendar) {
+      context.commit("storeCalendar", calendar);
     },
     removeCalendar(context, calendar: Calendar) {
       context.commit("removeCalendar", calendar);

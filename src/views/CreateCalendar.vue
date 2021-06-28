@@ -31,11 +31,9 @@
           <label :for="day.toString()">{{ dayOfTheWeek[day] }}</label>
         </div>
       </div>
-      <div class="p-col-2">
-        <Button @click="submitCalendar" label="Submit"></Button>
-      </div>
     </div>
   </div>
+  <Button @click="submitCalendar" label="Submit"></Button>
 </template>
 <script lang="ts">
 import { Calendar as MyCalendar } from "@/models/calendar.model";
@@ -66,7 +64,6 @@ export default defineComponent({
         daysOfTheWeek.push(Number(item));
       }
     }
-    console.log(daysOfTheWeek);
     const submitCalendar = () => {
       console.log(calendar.value);
       store.dispatch("storeCalendar", calendar.value);

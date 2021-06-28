@@ -1,4 +1,4 @@
-import CreateCalendarVue from "@/views/CreateCalendar.vue";
+import CreateCalendar from "@/views/CreateCalendar.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Calendars from "../views/Calendars.vue";
 const routes: Array<RouteRecordRaw> = [
@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/create",
     name: "CreateCalendar",
-    component: CreateCalendarVue,
+    component: CreateCalendar,
   },
 ];
 
