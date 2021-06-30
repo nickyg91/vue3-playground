@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import router from "./router";
 import store, { key } from "./store";
 import App from "../src/App.vue";
+import ToastService from "primevue/toastservice";
 // import Oruga from "@oruga-ui/oruga-next";
 // import { bulmaConfig } from "./oruga-configs/bulma-config";
 
@@ -14,6 +15,7 @@ const app = createApp(App);
 app
   .use(store, key)
   .use(router)
+  .use(ToastService)
   .use(PrimeVue, { ripple: true, inputStyle: "outlined" })
   // .use(Oruga, {
   //   iconPack: "fas",

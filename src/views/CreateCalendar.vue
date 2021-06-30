@@ -37,15 +37,16 @@
 </template>
 <script lang="ts">
 import { Calendar as MyCalendar } from "@/models/calendar.model";
-import { defineComponent, ref } from "vue";
+import { DayOfTheWeek } from "@/models/day-of-the-week.enum";
+import { key } from "@/store";
+import Button from "primevue/button";
+import Calendar from "primevue/calendar";
+import Checkbox from "primevue/checkbox";
 import Divider from "primevue/divider";
 import InputText from "primevue/inputtext";
-import Calendar from "primevue/calendar";
-import Button from "primevue/button";
-import Checkbox from "primevue/checkbox";
-import { DayOfTheWeek } from "@/models/day-of-the-week.enum";
+import { defineComponent, ref } from "vue";
 import { useStore } from "vuex";
-import { key } from "@/store";
+import { useToast } from "primevue/usetoast";
 export default defineComponent({
   components: {
     Divider,
@@ -55,6 +56,7 @@ export default defineComponent({
     Checkbox,
   },
   setup() {
+    const toastService = useToast();
     const store = useStore(key);
     const calendar = ref(new MyCalendar());
     const daysOfTheWeek: DayOfTheWeek[] = [];
@@ -65,9 +67,14 @@ export default defineComponent({
       }
     }
     const submitCalendar = () => {
-      console.log(calendar.value);
       store.dispatch("storeCalendar", calendar.value);
       calendar.value = new MyCalendar();
+      toastService.add({
+        severity: "success",
+        summary: "Calendar successfully created!",
+        life: 3000,
+        closable: true,
+      });
     };
     return {
       calendar,

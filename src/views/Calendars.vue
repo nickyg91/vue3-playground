@@ -10,7 +10,6 @@
       <hr />
     </div>
   </div>
-
   <div class="p-grid">
     <div class="p-col-2">
       <div v-if="!calendars || calendars.length == 0">

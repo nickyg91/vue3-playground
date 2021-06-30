@@ -1,5 +1,6 @@
 <template>
   <Menubar class="p-menubar" :model="routes"></Menubar>
+  <Toast position="top-right" />
   <div class="content">
     <router-view />
   </div>
@@ -7,9 +8,11 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import Menubar from "primevue/menubar";
+import Toast from "primevue/toast";
 export default defineComponent({
   components: {
     Menubar,
+    Toast,
   },
   setup() {
     const routes = ref([
