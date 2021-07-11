@@ -1,8 +1,11 @@
+import { CalendarRepeat } from "./calendar-repeat.enum";
 import { DayOfTheWeek } from "./day-of-the-week.enum";
 
 export class Calendar {
-  daysOfTheWeek?: DayOfTheWeek[] | undefined;
+  daysOfTheWeek!: DayOfTheWeek[];
   title = "";
-  startDate?: Date | undefined;
-  endDate?: Date | undefined;
+  startDate!: Date;
+  endDate!: Date;
+
+  repeatsEvery!: CalendarRepeat;
 }

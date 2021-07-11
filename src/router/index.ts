@@ -1,4 +1,5 @@
 import CreateCalendar from "@/views/CreateCalendar.vue";
+import Users from "@/views/Users.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Calendars from "../views/Calendars.vue";
 const routes: Array<RouteRecordRaw> = [
@@ -11,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/create",
     name: "CreateCalendar",
     component: CreateCalendar,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    component: Users,
   },
 ];
 

@@ -1,11 +1,6 @@
 /* eslint-disable */
 import { State } from "./store";
 import { Store } from "vuex";
-// declare module "*.vue" {
-//   const component: DefineComponent<{}, {}, any>;
-
-//   export default component;
-// }
 
 declare module "*.vue" {
   import { defineComponent } from "vue";

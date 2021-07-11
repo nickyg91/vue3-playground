@@ -24,6 +24,10 @@ export default defineComponent({
         label: "Create",
         to: "/create",
       },
+      {
+        label: "Users",
+        to: "/users",
+      },
     ]);
     return {
       routes,
@@ -56,5 +60,8 @@ body {
     Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   color: white;
   background-color: var(--surface-0);
+}
+.p-valid {
+  border-color: green;
 }
 </style>
